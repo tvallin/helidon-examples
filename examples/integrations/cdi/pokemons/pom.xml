@@ -66,17 +66,12 @@
             <groupId>org.graalvm.sdk</groupId>
             <artifactId>nativeimage</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <scope>runtime</scope>
-        </dependency>
 
 
         <!-- Runtime-scoped dependencies. -->
         <dependency>
             <groupId>io.helidon.integrations.db</groupId>
-            <artifactId>helidon-integrations-db-pgsql</artifactId>
+            <artifactId>ojdbc</artifactId>
         </dependency>
         <dependency>
             <groupId>io.helidon.integrations.cdi</groupId>
