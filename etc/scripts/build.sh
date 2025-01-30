@@ -45,7 +45,7 @@ readonly WS_DIR
 mvn ${MAVEN_ARGS} --version
 
 # shellcheck disable=SC2086
-mvn ${MAVEN_ARGS} \
+mvn ${MAVEN_ARGS} -T8 \
     -f "${WS_DIR}"/pom.xml \
     -Dmaven.test.failure.ignore=true \
     clean install
