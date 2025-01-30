@@ -29,7 +29,7 @@
     <groupId>io.helidon.examples</groupId>
     <artifactId>helidon-examples-coherence</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <name>Helidon Examples Coherence SE</name>
+    <name>Helidon Example Coherence</name>
 
     <properties>
         <mainClass>io.helidon.examples.coherence.Main</mainClass>

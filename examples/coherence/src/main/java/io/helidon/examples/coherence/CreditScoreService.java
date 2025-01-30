@@ -29,9 +29,9 @@ import static java.lang.System.Logger.Level.INFO;
 /**
  * Credit score service.
  */
-public class CreditscoreService implements HttpService {
+class CreditScoreService implements HttpService {
 
-    private static final System.Logger LOGGER = System.getLogger(CreditscoreService.class.getName());
+    private static final System.Logger LOGGER = System.getLogger(CreditScoreService.class.getName());
     private static final int SCORE_MAX = 800;
     private static final int SCORE_MIN = 550;
 
@@ -39,10 +39,10 @@ public class CreditscoreService implements HttpService {
 
     @Override
     public void routing(HttpRules rules) {
-        rules.post(this::postCreditscore);
+        rules.post(this::postCreditScore);
     }
 
-    private void postCreditscore(ServerRequest req, ServerResponse res) {
+    private void postCreditScore(ServerRequest req, ServerResponse res) {
         Person person = req.content().as(Person.class);
         if (person.firstName() == null || person.lastName() == null || person.dateOfBirth() == null || person.ssn() == null) {
             res.status(Status.BAD_REQUEST_400).send("Bad Request");
@@ -64,7 +64,7 @@ public class CreditscoreService implements HttpService {
     private int calculateCreditScore(Person p) {
         int score = Math.abs(p.hashCode()) % SCORE_MAX;
         while (score < SCORE_MIN) {
-            score = score + 100;
+            score += 100;
         }
         // Pause for dramatic effect
         sleep();
@@ -73,7 +73,7 @@ public class CreditscoreService implements HttpService {
 
     private void sleep() {
         try {
-            Thread.sleep(2 * 1_000L);
+            Thread.sleep(2_000L);
         } catch (InterruptedException ignored) {
         }
     }

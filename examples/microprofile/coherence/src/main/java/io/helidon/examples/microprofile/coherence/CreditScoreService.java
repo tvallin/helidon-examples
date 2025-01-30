@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024 Oracle and/or its affiliates.
+ * Copyright (c) 2024, 2025 Oracle and/or its affiliates.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -33,11 +33,10 @@ import static java.lang.System.Logger.Level.INFO;
  */
 @ApplicationScoped
 @Path("/creditscore")
-public class CreditscoreService {
+public class CreditScoreService {
 
-    private static final System.Logger LOGGER = System.getLogger(CreditscoreService.class.getName());
+    private static final System.Logger LOGGER = System.getLogger(CreditScoreService.class.getName());
     private static final String CACHE_NAME = "creditScoreCache";
-
     private static final int SCORE_MAX = 800;
     private static final int SCORE_MIN = 550;
 
@@ -53,7 +52,7 @@ public class CreditscoreService {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response postMethodCreditScore(Person person) {
+    public Response postCreditScore(Person person) {
 
         if (person.firstName() == null || person.lastName() == null || person.dateOfBirth() == null || person.ssn() == null) {
             return Response.status(Response.Status.BAD_REQUEST).entity("Bad request").build();
@@ -76,7 +75,7 @@ public class CreditscoreService {
     private int calculateCreditScore(Person p) {
         int score = Math.abs(p.hashCode()) % SCORE_MAX;
         while (score < SCORE_MIN) {
-            score = score + 100;
+            score += 100;
         }
         // Pause for dramatic effect
         sleep();
@@ -85,7 +84,7 @@ public class CreditscoreService {
 
     private void sleep() {
         try {
-            Thread.sleep(2 * 1_000L);
+            Thread.sleep(2_000L);
         } catch (InterruptedException ignored) {
         }
     }

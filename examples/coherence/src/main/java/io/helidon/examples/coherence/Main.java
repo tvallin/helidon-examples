@@ -20,6 +20,8 @@ import io.helidon.logging.common.LogConfig;
 import io.helidon.webserver.WebServer;
 import io.helidon.webserver.http.HttpRouting;
 
+import com.tangosol.net.Coherence;
+
 /**
  * Helidon SE coherence example {@code Main} class.
  */
@@ -36,11 +38,15 @@ public class Main {
      *
      * @param args command line arguments.
      */
-    public static void main(String[] args) {
+    @SuppressWarnings("resource")
+    public static void main(String[] args) throws InterruptedException {
         // load logging configuration
         LogConfig.configureRuntime();
         // initialize global config from default configuration
         Config config = Config.create();
+
+        Coherence coherence = Coherence.clusterMember();
+        coherence.startAndWait();
 
         WebServer server = WebServer.builder()
                 .config(config.get("server"))
@@ -55,6 +61,6 @@ public class Main {
      * Updates HTTP Routing and registers observe providers.
      */
     static void routing(HttpRouting.Builder routing) {
-        routing.register("/creditscore", new CreditscoreService());
+        routing.register("/creditscore", new CreditScoreService());
     }
 }

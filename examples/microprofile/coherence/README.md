@@ -1,4 +1,4 @@
-# helidon-creditscore-mp
+# Helidon Example Microprofile Coherence
 
 Sample Helidon MP applications that uses Coherence CE as a cache for application data.
 

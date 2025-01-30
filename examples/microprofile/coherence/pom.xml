@@ -26,15 +26,14 @@
         <version>4.2.0-SNAPSHOT</version>
         <relativePath/>
     </parent>
+    <groupId>io.helidon.examples.microprofile</groupId>
+    <artifactId>helidon-examples-microprofile-coherence</artifactId>
+    <name>Helidon Example Microprofile Coherence</name>
+    <version>1.0.0-SNAPSHOT</version>
 
     <properties>
         <version.lib.coherence>24.03.1</version.lib.coherence>
     </properties>
-
-    <groupId>io.helidon.examples.microprofile</groupId>
-    <artifactId>helidon-examples-microprofile-coherence</artifactId>
-    <name>Helidon Examples Microprofile Coherence</name>
-    <version>1.0.0-SNAPSHOT</version>
 
     <dependencyManagement>
         <dependencies>
